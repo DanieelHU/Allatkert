@@ -1,21 +1,24 @@
-zoo = list()
-select = None
+def addAnimal(zoo, myName):
+    found = False
+    for a in zoo:
+        if  myName in a.keys():
+            a[myName] += 1
+            found = True
+            #break
+        if not found:
+            animal[myName] = 1
+            zoo.append(animal)
+    
+
+zoo = [{"kecske": 1}]
+animal = dict()
 print("Ez egy állatkert.")
 print("Állat hozzáadása (1) - elvétele (2) kilépés (0)")
-
+select = None
 while select != "0":
     select = input("Mit szeretne tenni?")
     if select !="0":
         if select == "1":
-            animal = dict()
             name = input("Az állat neve: ")
-            if name not in animal.keys():
-                animal[name] = 1
-            else:
-                animal[name] += 1
-            zoo.append(animal)
-
-print("Az állatkertben lévő állatok nevei:")
-for animal in zoo:
-    for name, count in animal.items():
-        print(f"{name} ({count} db)")
+            addAnimal(name)
+print(f"Második: {zoo}")
